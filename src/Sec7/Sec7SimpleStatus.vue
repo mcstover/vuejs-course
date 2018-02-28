@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import ServerStatus from './ServerStatus'
+import ServerStatus from './Sec7/ServerStatus'
 
 export default {
   components: {

@@ -1,10 +1,8 @@
 <template>
 <div class="server">
   <h2>
-    Server {{ this.index }} - {{ status }}
+    Server {{ this.index }} - {{ status }} - <button @click="changeStatus">Change</button>
   </h2>
-  <br>
-  <button @click="changeStatus">Change</button>
 </div>
 </template>
 
