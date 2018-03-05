@@ -1,12 +1,25 @@
 <template>
 	<div class="cell small-12 medium-4">
 		<h3>Edit User:</h3>
+		<i>{{ userAge }}</i>
+		<button class="button small" @click="editAge">Edit Age</button>
 	</div>
 </template>
 
 <script>
-export default {
+import { eventBus } from '../main';
 
+export default {
+	props: {
+		userAge: Number
+	},
+	methods: {
+		editAge() {
+			this.userAge += 2;
+			// eventBus.$emit('ebUpdateAge', this.userAge);
+			eventBus.incrementAge(this.userAge);
+		}
+	}
 }
 </script>
 

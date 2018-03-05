@@ -1,20 +1,20 @@
 <template>
 	<div id="app">
 		<sec8-page></sec8-page>
-		<!-- <ex6-page></ex6-page> -->
+		<ex6-page></ex6-page>
 		<!-- Globally included Component -->
     	<!-- <simple-status></simple-status> -->
 	</div>
 </template>
 
 <script>
-// import Ex6Page from './Sec7/Ex6Page.vue';
+import Ex6Page from './Sec7/Ex6Page.vue';
 import Sec8Page from './Sec8/Sec8Page.vue';
 
 export default {
   name: 'app',
   components: {
-	//   'ex6-page': Ex6Page,
+	  'ex6-page': Ex6Page,
 	  'sec8-page': Sec8Page
   },
   data () {
