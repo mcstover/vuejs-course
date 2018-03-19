@@ -1,6 +1,7 @@
 <template>
 	<div id="app">
-		<sec10-quotes></sec10-quotes>
+    <sec11-page></sec11-page>
+		<!-- <sec10-quotes></sec10-quotes> -->
 		<!-- <sec9-page></sec9-page>
 		<hr>
 		<sec8-page></sec8-page>
@@ -15,12 +16,14 @@
 // import Ex6Page from './Sec7/Ex6Page.vue';
 // import Sec8Page from './Sec8/Sec8Page.vue';
 // import Sec9Page from './Sec9/Sec9Page.vue';
-import Sec10Quotes from './Sec10Quotes/Sec10Page.vue';
+// import Sec10Quotes from './Sec10Quotes/Sec10Page.vue';
+import Sec11Page from './Sec11/Sec11Page.vue';
 
 export default {
   name: 'app',
   components: {
-	  'sec10-quotes': Sec10Quotes
+    Sec11Page
+	  // 'sec10-quotes': Sec10Quotes
 	//   'ex6-page': Ex6Page,
 	//   'sec8-page': Sec8Page,
 	//   'sec9-page': Sec9Page
