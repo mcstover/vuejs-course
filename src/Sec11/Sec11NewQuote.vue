@@ -13,7 +13,7 @@
 						value="Public Quote"
 						v-model="newQuote.visibilityStatus"
 						/>
-				</label> 
+				</label>
 				<label for="publishedQuote">
 					Published Quote
 					<input
@@ -22,7 +22,7 @@
 						value="Published Quote"
 						v-model="newQuote.visibilityStatus"
 						/>
-				</label> 
+				</label>
 			</div>
 			<div>
 				<label for="male">
@@ -33,7 +33,7 @@
 						value="M"
 						v-model="newQuote.gender"
 						/>
-				</label> 
+				</label>
 				<label for="female">
 					Female
 					<input
@@ -42,7 +42,7 @@
 						value="F"
 						v-model="newQuote.gender"
 						/>
-				</label> 
+				</label>
 			</div>
 			<div>
 				<select v-model="newQuote.quoteRating">
@@ -54,13 +54,15 @@
 						:selected="index == newQuote.quoteRating">{{ index }}</option>
 				</select>
 			</div>
+			<sec11-switch v-model="newQuote.quoteSticky"></sec11-switch>
 			<button class="button success tiny">Save</button>
-		</form>		
+		</form>
 	</div>
 </template>
 
 <script>
 import { eventBus } from '../eventBus.js';
+import Sec11Switch from './Sec11Switch.vue';
 
 export default {
 	data: function() {
@@ -71,9 +73,13 @@ export default {
 				yearQuoted: null,
 				visibilityStatus: [],
 				gender: '',
-				quoteRating: ''
+				quoteRating: '',
+				quoteSticky: true
 			},
 		}
+	},
+	components: {
+		Sec11Switch
 	},
 	methods: {
 		saveQuoteSubmission() {

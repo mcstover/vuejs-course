@@ -24,7 +24,8 @@ export default {
 			quote: {
 				visibilityStatus: [],
 				gender: '',
-				quoteRating: 0
+				quoteRating: 0,
+				quoteSticky: null
 			}
 		}
 	},
@@ -33,7 +34,7 @@ export default {
 	},
 	components: {
 		Sec11NewQuote,
-		Sec11QuoteInfo		
+		Sec11QuoteInfo
 	},
 	methods: {
 

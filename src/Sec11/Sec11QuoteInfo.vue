@@ -5,13 +5,16 @@
 			- <b>{{ quote.quoteRating}}</b> | <i>{{ quote.author }} ({{ quote.yearQuoted }})</i>
 			<sup>{{ quote.gender }}</sup>
 		</small>
+		<br>
 		<ul>
 			<li
 				v-for="(item, index) in quote.visibilityStatus"
 				:key="index">
-					{{item}}
+					<small>{{item}}</small>
 			</li>
 		</ul>
+		<br>
+		<span v-if="quote.quoteSticky"><u>Show Always: {{ quote.quoteSticky }}</u></span>
 	</div>
 </template>
 

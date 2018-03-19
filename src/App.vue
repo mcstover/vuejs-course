@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-    <sec11-page></sec11-page>
+    	<sec11-page></sec11-page>
 		<!-- <sec10-quotes></sec10-quotes> -->
 		<!-- <sec9-page></sec9-page>
 		<hr>
