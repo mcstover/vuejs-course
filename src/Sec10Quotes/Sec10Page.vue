@@ -1,53 +1,73 @@
 <template>
   	<div class="sec10 grid-container">
-		<h2>Quotes Added</h2>
-		<div class="quote-meter"></div>
+		<h2>{{ quoteList.length }} Quotes Added</h2>
+		<div class="quote-meter">
+			<div class="success progress" role="progressbar" tabindex="0">
+				<div class="progress-meter" v-bind:style="{'width': percentComplete + '%'}">
+					<p class="progress-meter-text">{{percentComplete}}%</p>
+				</div>
+			</div>
+		</div>
 
-		<!-- <sec10-new-quote></sec10-new-quote> -->
+		<sec10-new-quote></sec10-new-quote>
 
-		<!-- <sec10-quote-list></sec10-quote-list> -->
+		<div v-if="quoteList.length">
+			<sec10-quote
+				v-for="(quote, index) in quoteList"
+				v-bind:key="index"
+				v-bind:index="index">
+				{{quote.quoteText}}
+			</sec10-quote>
+		</div>
 
-		<div class="quote-info">
+		<div class="quote-info callout primary">
 			<p>INFO: Click on a quote to DELETE it.</p>
-		<!-- </div>
-		<button @click="selectedComponent = 'Sec9SlotQuote'">Slot Quote</button>
-		<button @click="selectedComponent = 'Sec9Author'">Author</button>
-		<button @click="selectedComponent = 'Sec9NewQuote'">New</button>
-		<hr>
-		{{selectedComponent}}
-		<hr>
-		<keep-alive>
-			<component :is="selectedComponent">
-				<h2 slot="title">{{ quoteTitle }}</h2>
-				<blockquote>Some interesting statement or quote.</blockquote>
-			</component>
-		</keep-alive> -->
-		<!-- <sec9-slot-quote>
-			<h2 slot="title">{{ quoteTitle }}</h2>
-			<blockquote>Some interesting statement or quote.</blockquote>
-		</sec9-slot-quote> -->
+		</div>
     </div>
 </template>
 
 <script>
-// import Sec9SlotQuote from './Sec9SlotQuote.vue';
-// import Sec9Author from './Sec9Author.vue';
+import Sec10Quote from './Sec10Quote.vue';
 import Sec10NewQuote from './Sec10NewQuote.vue';
+import { eventBus } from '../eventBus.js';
 
 export default {
 	data: function() {
 		return {
 			quoteTitle: 'Dynamic Quote Title',
-			selectedComponent: 'Sec9SlotQuote'
+			selectedComponent: 'Sec9SlotQuote',
+			quoteList: []
+		}
+	},
+	computed: {
+		percentComplete: function() {
+			return this.quoteList.length * 10;
 		}
 	},
 	components: {
-		// Sec9SlotQuote,
-		// Sec9Author,
+		Sec10Quote,
 		Sec10NewQuote
 	},
 	methods: {
 
+	},
+	created() {
+		eventBus.$on('ebSaveQuote', (quoteText) => {
+			console.log('recieved quote: ' + quoteText);
+
+			if (this.quoteList.length === 10) {
+				alert('10 quote limit');
+				return false;
+			}
+
+			this.quoteList.push({
+				quoteText: quoteText
+			});
+		});
+		eventBus.$on('ebDeleteQuote', (index) => {
+			console.log('detected deleteQuote event at index: ' + index);
+			this.quoteList = this.quoteList.filter((quote, i) => i !== index);
+		});
 	}
 }
 </script>

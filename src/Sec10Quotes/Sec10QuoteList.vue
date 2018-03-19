@@ -1,7 +1,7 @@
 <template>
-	<div>
-		<h4>The Author</h4>
-	</div>
+	<ul>
+		<li v-for="(item, index) in quotes"></li>
+	</ul>
 </template>
 
 <script>

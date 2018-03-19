@@ -15,7 +15,7 @@
 // import Ex6Page from './Sec7/Ex6Page.vue';
 // import Sec8Page from './Sec8/Sec8Page.vue';
 // import Sec9Page from './Sec9/Sec9Page.vue';
-import Sec10Quotes from './Sec10/Sec10Page.vue';
+import Sec10Quotes from './Sec10Quotes/Sec10Page.vue';
 
 export default {
   name: 'app',

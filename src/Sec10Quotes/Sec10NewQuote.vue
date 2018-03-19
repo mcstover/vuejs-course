@@ -1,23 +1,28 @@
 <template>
 	<div>
-		New Quote Component
-		<button @click="counter++">Increase</button>
-		{{counter}}
+		<form @submit.prevent="saveQuote" id="quote-entry" title="Quote Entry Form">
+			<textarea v-model="newQuoteText" placeholder="Enter New Quote"></textarea>
+			<button class="button success tiny">Save</button>
+		</form>		
 	</div>
 </template>
 
 <script>
+import { eventBus } from '../eventBus.js';
+
 export default {
 	data: function() {
 		return {
+			newQuoteText: '',
 			counter: 0
 		}
 	},
-	deactivated() {
-		console.log('Deactivated new quote component');
-	},
-	activated() {
-		console.log('Activated new quote component');
+	methods: {
+		saveQuote() {
+			eventBus.saveQuote(this.newQuoteText);
+			this.counter = this.counter + 1;
+			console.log(this.newQuoteText);
+		}
 	}
 }
 </script>
