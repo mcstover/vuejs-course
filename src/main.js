@@ -38,6 +38,20 @@ Vue.directive('hl', {
 	unbind() { console.log('directive unbind hook'); }
 });
 
+// Global Directive in Main
+// directive has event type arg bound and fires native method on detecting the event type
+Vue.directive('customOn', {
+	bind(el, binding, vnode) {
+		const type = binding.arg;
+		const fn = binding.value;
+		el.addEventListner(type, fn);
+	}
+});
+
+Vue.filter('toLowercase', function(value) {
+	return value.toLowerCase();
+});
+
 new Vue({
   el: '#app',
   render: h => h(App)
