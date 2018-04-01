@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+import VueResource from 'vue-resource';
+Vue.use(VueResource);
+
 // Globally Registerd Component
 // import SimpleStatus from './Sec7/Sec7SimpleStatus.vue'
 // Vue.component('simple-status', SimpleStatus);
